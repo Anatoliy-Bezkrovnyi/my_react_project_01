@@ -15,9 +15,10 @@ const App = () => {
       
       <Routes>        
         <Route path="/" element={<HomePage/>} />
-        <Route path="/posts" element={<PostPage/>} />
-        <Route path="/profile" element={<div>Profile page</div>} />
-        <Route path="/post/:postId" element={<PostDetails/>} />
+        <Route path="/posts" element={<PostPage/>} />        
+        <Route path="/post/:postId" element={<PostDetails />} >
+          <Route path="reactions" element={<div>Reactions</div>} />
+        </Route >
       </Routes>
       
     </div>
