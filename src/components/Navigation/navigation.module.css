@@ -1,0 +1,18 @@
+.navLinks {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.navLinks li a {
+  text-decoration: none;
+  color: black;
+}
+
+.navLinks li:hover {
+  text-decoration: underline;
+}
+
+.navLinks li a.isActive {
+  color: blueviolet;
+}
