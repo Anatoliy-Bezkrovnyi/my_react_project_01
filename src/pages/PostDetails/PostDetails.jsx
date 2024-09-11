@@ -1,9 +1,11 @@
 import { Link, Outlet, useParams } from "react-router-dom"
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useState } from "react";
 import { fetchPost } from "../../api/post-api";
 import Error from "../../components/Error/Error";
 import Loading from "../../components/Loading/Loading";
+import { useLocation } from "react-router-dom";
+
 
 
 
@@ -13,7 +15,11 @@ const PostDetails = () => {
     const [post, setPost] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(false);
+    const location = useLocation();  
+    
+    const locationObj = useRef(location.state ?? '/posts');
 
+    
     
     
     useEffect(() => {
@@ -36,6 +42,8 @@ const PostDetails = () => {
     
     return (
         <div>
+            <Link to={locationObj.current}>Back</Link>
+            <br/>
             {isLoading && <Loading />}
             {error && <Error />}
             {post && (<div> Description 
@@ -44,7 +52,7 @@ const PostDetails = () => {
                 <li>Description: {post.body}</li>
                 <li>Vievs: {post.views}</li>
             </div>)}
-            <Link to={'reactions'}>Reactions</Link>
+            <Link to={'reactions'} state={location.state}>Reactions</Link>
             <br />
             <Outlet />
         </div>          
