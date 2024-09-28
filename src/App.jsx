@@ -9,6 +9,7 @@ import Loading from "./components/Loading/Loading";
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'))
 const PostPage = lazy(() => import('./pages/PostPage/PostPage'))
 const PostDetails = lazy(() => import('./pages/PostDetails/PostDetails'))
+const BalancePage = lazy(() => import('./pages/BalancePage/BalancePage'))
 
 const App = () => {
   
@@ -23,7 +24,8 @@ const App = () => {
         <Route path="/posts" element={<PostPage/>} />        
         <Route path="/post/:postId" element={<PostDetails />} >
           <Route path="reactions" element={<div>Reactions</div>} />
-        </Route >
+          </Route >
+        <Route path="/balance" element={<BalancePage/>} /> 
       </Routes>
       </Suspense>
     </div>
